@@ -1,6 +1,6 @@
 import { StrictMode, useEffect, useRef, useState, type ReactNode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { MotionConfig, motion, useInView, useReducedMotion, useScroll, useTransform } from 'framer-motion'
+import { MotionConfig, motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, Heart, Image as ImageIcon, Mail, Music2, Pause, Play, RotateCcw, Sprout, Volume2, VolumeX, X } from 'lucide-react'
 import { images, tribute as t, type PhotoKey } from './data/tribute'
 import '@fontsource/cormorant-garamond/latin-500.css'
@@ -44,16 +44,13 @@ function Reveal({ children, className = '' }: { children: ReactNode; className?:
   </motion.div>
 }
 
-function TypeQuote({ children }: { children: string }) {
-  const ref = useRef<HTMLQuoteElement>(null)
-  const visible = useInView(ref, { once: true })
+function StoryQuote({ children }: { children: string }) {
   const reduce = useReducedMotion()
-  return <blockquote ref={ref} className={visible && !reduce ? 'type-quote is-visible' : 'type-quote'}>
-    <span className="sr-only">{children}</span>
-    <span aria-hidden="true">{Array.from(children, (character, index) =>
-      <span key={index} style={{ animationDelay: `${index * 17}ms` }}>{character}</span>
-    )}</span>
-  </blockquote>
+  return <motion.blockquote className="story-quote"
+    initial={reduce ? false : { opacity: 0.65 }}
+    whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.45 }}>
+    {children}
+  </motion.blockquote>
 }
 
 function Story({ personal = false }: { personal?: boolean }) {
@@ -67,7 +64,7 @@ function Story({ personal = false }: { personal?: boolean }) {
       <p className="eyebrow">{personal ? '02 / At home' : '01 / At school'}</p>
       <h2>{story.title}</h2>
       <div lang="id">{story.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}</div>
-      {personal && <TypeQuote>{t.familyStory.quote}</TypeQuote>}
+      {personal && <StoryQuote>{t.familyStory.quote}</StoryQuote>}
     </Reveal>
     <Reveal className="story-photos">
       <motion.figure className="polaroid large-print" style={reduce ? undefined : { y: drift }}>
@@ -113,7 +110,7 @@ function Gallery() {
         <Photo name={name} /><span className="caption">{images[name].caption}</span>
       </button>)}
     </div></Reveal>
-    <TypeQuote>{t.gallery.quote}</TypeQuote>
+    <StoryQuote>{t.gallery.quote}</StoryQuote>
     <dialog ref={dialog} className="lightbox" aria-label="Family photograph" onClick={event => {
       if (event.target === event.currentTarget) dialog.current?.close()
     }} onKeyDown={event => {

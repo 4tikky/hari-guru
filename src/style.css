@@ -108,9 +108,7 @@ h2 { font-size: clamp(3.1rem, 6vw, 6.4rem); letter-spacing: -.055em; }
 .photo img { object-fit: cover; filter: sepia(.14) saturate(.85); opacity: 0; transition: opacity .5s; }
 .photo img.loaded { opacity: 1; }
 .photo:has(.loaded) .photo-placeholder { visibility: hidden; }
-.type-quote { color: var(--brown); font: italic 600 clamp(1.55rem, 3vw, 2.6rem)/1.12 var(--display); margin-top: 1.65rem; }
-.type-quote.is-visible span[aria-hidden] > span { animation: type-in .12s step-end both; }
-@keyframes type-in { from { opacity: 0; } }
+.story-quote { color: var(--brown); font: italic 600 clamp(1.55rem, 3vw, 2.6rem)/1.12 var(--display); margin-top: 1.65rem; }
 
 .notebook-section, .letter-section { padding: clamp(4rem, 10vw, 8rem) 1.25rem; }
 .heading { max-width: 760px; margin: 0 auto clamp(2rem, 6vw, 4rem); }
@@ -133,7 +131,7 @@ h2 { font-size: clamp(3.1rem, 6vw, 6.4rem); letter-spacing: -.055em; }
 .gallery-print:nth-child(even) { rotate: 3deg; }
 .gallery-print:hover { transform: translateY(-6px); }
 .gallery-print .caption { display: block; min-height: 2em; padding-top: .55rem; }
-.gallery-section > .type-quote { padding: 0 6vw; text-align: center; margin-top: 2.3rem; }
+.gallery-section > .story-quote { padding: 0 6vw; text-align: center; margin-top: 2.3rem; }
 .lightbox { position: fixed; inset: 0; margin: auto; border: 0; padding: 0; max-width: min(90vw, 760px); width: 100%; max-height: 94svh; background: var(--paper); color: var(--brown); box-shadow: 0 10px 50px #0007; }
 .lightbox::backdrop { background: #24251fe0; }
 .lightbox-inner { position: relative; padding: .75rem; touch-action: pan-y; }
