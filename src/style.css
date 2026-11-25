@@ -93,12 +93,12 @@ h2 { font-size: clamp(3.1rem, 6vw, 6.4rem); letter-spacing: -.055em; }
 .story .eyebrow, .heading .eyebrow, .gallery-heading .eyebrow { color: var(--brown); margin-bottom: 1rem; }
 .story-copy div[lang] { max-width: 48ch; }
 .story-copy div[lang] p { margin-top: 1.1rem; }
-.story-photos { position: relative; padding: 0 12% 12% 4%; }
+.story-photos { position: relative; padding: 0 12% 1.5rem 4%; }
 .polaroid { background: #fff7eb; color: var(--brown); padding: .7rem .7rem 1rem; box-shadow: 0 10px 26px #30201223, 0 1px 3px #30201226; }
 .large-print { position: relative; z-index: 1; rotate: -4deg; text-align: center; }
 .large-print figcaption { margin-top: .6rem; }
 .large-print small { display: block; font-size: .73rem; }
-.small-print { position: absolute; bottom: 0; right: 0; width: 43%; z-index: 2; rotate: 9deg; }
+.small-print { position: absolute; top: 0; right: 0; width: 39%; z-index: 2; rotate: 9deg; }
 .small-print .photo { aspect-ratio: 1; }
 .small-print .photo-placeholder span, .small-print .photo-placeholder small { display: none; }
 .photo { position: relative; overflow: hidden; min-height: 90px; aspect-ratio: 4/3; background: #bda88c; }
